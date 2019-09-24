@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Game</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <div class="game form-group" style="width: 450px;">
+                    <h1 class="display-3 d-flex justify-content-center">GAME GUESS</h1>
+                    <hr>
+                    <div class="alert alert-secondary" role="alert" id="message">
+                        Guess any number!
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Number</span>
+                        </div>
+                        <input type="number" id="number" class="form-control" placeholder="Ex: 15" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" id="btnCheck">Check</button>
+                        </div>
+                        <br>
+                    </div>
+                    <small id="GuessHelp" class="form-text text-muted" style="margin-top:-10px; margin-left:2px;"></small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var result = Math.floor(Math.random() * Math.floor(20)); // random MAX=20
+        var pastGuesses = [];
+
+        let button = document.getElementById("btnCheck");
+        button.addEventListener("click", check);
+
+        function check() {
+            let userInput = parseInt(document.getElementById("number").value);
+            if (!userInput) return;
+            pastGuesses.push(userInput);
+            let notifyContent = "";
+            if (result === userInput) {
+                notifyContent = "Correct !";
+                button.remove();
+                document.querySelectorAll('#message')[0].className = "alert alert-success";
+            }
+            else if (result > userInput) {
+                notifyContent = "You should enter a greater number.";
+                document.querySelectorAll('#message')[0].className = "alert alert-danger";
+            }
+            else if (result < userInput) {
+                notifyContent = "You should enter a lesser number.";
+                document.querySelectorAll('#message')[0].className = "alert alert-danger";
+            }
+            else {
+                notifyContent = "(!) Empty";
+                document.querySelectorAll('#message')[0].className = "alert alert-danger";
+            }
+            
+            document.getElementById("message").innerHTML = notifyContent;
+
+            document.getElementById("number").value = "";
+
+            document.getElementById("GuessHelp").innerHTML = "Last guess: " + pastGuesses[pastGuesses.length-1] + " | " + "Countdown: " + (10 - pastGuesses.length);
+
+            if (10 - pastGuesses.length === 0){
+                button.remove();
+            }
+
+        }
+    </script>
+</body>
+
+</html>
