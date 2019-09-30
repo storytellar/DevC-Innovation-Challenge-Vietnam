@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   countText: {
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: '600',
   },
   countLabelText: {
