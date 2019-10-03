@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Insta Fake",
-    "slug": "profile-app",
+    "name": "Instagram Clone",
+    "slug": "InstagramFeed",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
@@ -24,8 +24,7 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.storytellar.igfake"
+      "supportsTablet": true
     }
   }
 }
