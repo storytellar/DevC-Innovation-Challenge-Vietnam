@@ -11,8 +11,8 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      userChoice: {},
-      computerChoice: {},
+      userChoice: { image: require('./assets/all.png') },
+      computerChoice: { image: require('./assets/all.png') },
       result: 'Make your choice',
       userStatistic: {
         countTie: 0,
@@ -44,25 +44,29 @@ export default class App extends React.Component {
     // console.log(this.state.userStatistic);
     return (
       <SafeAreaView style={styles.container}>
-        <View style={styles.header}>
-          <Header result={this.state.result} />
+
+        <View style={styles.dataArea}>
+          <DataCard userStatistic={this.state.userStatistic} />
         </View>
+
         <View style={styles.playArea}>
           <View style={styles.choicesContainer}>
             <ChoiceCard
-              playerName="You"
+              playerName="YOU"
               choice={this.state.userChoice}
             />
-            <Text>VS</Text>
+            <Text>(vs)</Text>
             <ChoiceCard
-              playerName="Computer"
+              playerName="COMP"
               choice={this.state.computerChoice}
             />
           </View>
         </View>
-        <View style={styles.dataArea}>
-          <DataCard userStatistic={this.state.userStatistic}/>
+
+        <View style={styles.header}>
+          <Header result={this.state.result} />
         </View>
+
         <View style={styles.choiceButtons}>
           <ChoiceButtons onButtonPress={this.onChoicePress} />
         </View>
@@ -76,23 +80,23 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    flex: 0.1,
+    flex: 0.2,
   },
   dataArea: {
-    flex: 0.2,
-    // backgroundColor: 'blue',
+    flex: 0.15,
   },
   playArea: {
-    flex: 0.55,
+    flex: 0.45,
   },
   choiceButtons: {
-    flex: 0.15,
+    flex: 0.2,
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
   choicesContainer: {
     margin: 10,
     borderWidth: 2,
+    borderRadius: 100,
     paddingTop: 100,
     shadowRadius: 5,
     paddingBottom: 100,

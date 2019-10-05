@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import CHOICES from '../choices'
 
 const ChoiceButtons = (props) => {
@@ -14,7 +14,8 @@ const ChoiceButtons = (props) => {
                                 key={choice.name}
                                 onPress={() => props.onButtonPress(choice.name)}
                             >
-                                <Text style={styles.buttonText}>{choice.name}</Text>
+                                {/* <Text style={styles.buttonText}>{choice.name}</Text> */}
+                                <Image style={styles.choiceImage} source={choice.image}></Image>
                             </TouchableOpacity>
                         )
                     })
@@ -31,23 +32,23 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     buttonStyle: {
-        width: 100,
-        margin: 10,
-        height: 100,
-        borderRadius: 50,
+        width: 70,
+        margin: 25,
+        height: 70,
+        borderRadius: 20,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#640D14',
+        backgroundColor: '#524848',
 
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
-            height: 3,
+            height: 8,
         },
-        shadowOpacity: 0.27,
-        shadowRadius: 4.65,
+        shadowOpacity: 0.46,
+        shadowRadius: 11.14,
 
-        elevation: 6,
+        elevation: 17,
     },
     buttonText: {
         fontSize: 22,
@@ -55,6 +56,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 
+    choiceImage: {
+        width: 120,
+        height: 120,
+        padding: 10,
+        transform: [{ rotate: '20deg' }]
+    },
 });
 
 
