@@ -10,14 +10,14 @@ export default class TodoItem extends Component {
             {
                 radioName: "radio-button-unchecked",
                 radioColor: "#aaa",
-                textColor: "#555",
+                textColor: "#333745",
             } : 
             {
                 radioName: "radio-button-checked",
-                radioColor: "#cc524e",
-                textColor: "#bbb",
+                radioColor: '#fe5f55',
+                textColor: "#aaa",
             } ;
-        const body = data.body.length > 36 ? data.body.substr(0, 32) + '...' : data.body;
+        const body = data.body.length > 41 ? data.body.substr(0, 38) + '...' : data.body;
         
         return (
             <View style={styles.todoWrapper}>
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontWeight: '400',
-        fontSize: 20,
+        fontSize: 16,
     },
 })
 

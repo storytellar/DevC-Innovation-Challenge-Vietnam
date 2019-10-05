@@ -6,6 +6,7 @@ import { TODOS } from '../constants/Utils'
 import TodoItem from '../components/TodoItem'
 
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 export default class TodoScreen extends Component {
@@ -25,6 +26,7 @@ export default class TodoScreen extends Component {
     }
 
     onSubmit = () => {
+        if (!this.state.inputText) return;
         const newTodoItem = {
             body: this.state.inputText,
             status: 'Active',
@@ -98,13 +100,14 @@ export default class TodoScreen extends Component {
                         })
                     }
                     <View style={styles.newTodoWrapper}>
-                        <MaterialIcons
-                            name="create"
-                            size={32}
-                            style={styles.icon}
-                            color="#aaa"
-                            onPress={this.onSubmit}
-                        />
+                        <TouchableOpacity onPress={this.onSubmit}>
+                            <MaterialIcons
+                                name="create"
+                                size={32}
+                                style={styles.icon}
+                                color="#333745"
+                            />
+                        </TouchableOpacity>
                         <TextInput
                             style={styles.input}
                             onChangeText={this.onChange}
@@ -128,6 +131,8 @@ const styles = StyleSheet.create({
         width: 350,
         borderBottomWidth: 1,
         borderBottomColor: '#eee',
+        fontSize: 16,
+        color: '#333745',
     },
     newTodoWrapper: {
         flexDirection: 'row',
