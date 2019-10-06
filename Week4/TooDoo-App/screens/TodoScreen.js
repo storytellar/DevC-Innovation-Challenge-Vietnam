@@ -82,40 +82,46 @@ export default class TodoScreen extends Component {
         );
     }
 
+    getTodoList = () => {
+        return this.state.todoList;
+    }
+
     render() {
         return (
-            <SafeAreaView>
-                <KeyboardAwareScrollView contentContainerStyle={styles.container}>
-                    {
-                        this.state.todoList.map(item => {
-                            return (
-                                <TodoItem
-                                    key={item.id}
-                                    data={item}
-                                    onPressButton={() => this.onPressTodoItem(item)}
-                                    onLongPressButton={() => this.onLongPressTodoItem(item)}
-                                    onPressForDetailButton={() => this.onPressDetailItem(item)}
-                                />
-                            )
-                        })
-                    }
-                    <View style={styles.newTodoWrapper}>
-                        <TouchableOpacity onPress={this.onSubmit}>
-                            <MaterialIcons
-                                name="create"
-                                size={32}
-                                style={styles.icon}
-                                color="#333745"
+
+            <KeyboardAwareScrollView contentContainerStyle={styles.container}>
+                <View style={styles.header}>
+                    <Text style={styles.headerText}>Toodoo ({this.state.todoList.length})</Text>
+                </View>
+                {
+                    this.state.todoList.map(item => {
+                        return (
+                            <TodoItem
+                                key={item.id}
+                                data={item}
+                                onPressButton={() => this.onPressTodoItem(item)}
+                                onLongPressButton={() => this.onLongPressTodoItem(item)}
+                                onPressForDetailButton={() => this.onPressDetailItem(item)}
                             />
-                        </TouchableOpacity>
-                        <TextInput
-                            style={styles.input}
-                            onChangeText={this.onChange}
-                            value={this.state.inputText}
-                            onSubmitEditing={this.onSubmit} />
-                    </View>
-                </KeyboardAwareScrollView>
-            </SafeAreaView>
+                        )
+                    })
+                }
+                <View style={styles.newTodoWrapper}>
+                    <TouchableOpacity onPress={this.onSubmit}>
+                        <MaterialIcons
+                            name="create"
+                            size={32}
+                            style={styles.icon}
+                            color="#333745"
+                        />
+                    </TouchableOpacity>
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={this.onChange}
+                        value={this.state.inputText}
+                        onSubmitEditing={this.onSubmit} />
+                </View>
+            </KeyboardAwareScrollView>
         )
     }
 }
@@ -124,6 +130,23 @@ const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
         marginHorizontal: 15,
+    },
+    header: {
+        paddingTop: 10,
+        marginTop: 55,
+        paddingBottom: 10,
+        // borderBottomColor: '#aaa',
+        // borderBottomWidth: 0.3,
+
+        borderRadius: 5,
+        borderWidth: 0.5,
+        borderColor: '#333745',
+    },
+    headerText: {
+        fontSize: 18,
+        fontWeight: '800',
+        textAlign: 'center',
+        color: '#333745'
     },
     input: {
         paddingVertical: 15,
@@ -138,10 +161,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: 'center',
-    }
+    },
 })
 
 TodoScreen.navigationOptions = {
-    // header: null,
+    header: null,
     title: 'Tasks',
 };

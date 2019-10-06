@@ -14,8 +14,8 @@ export default class TodoDetailsScreen extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.wrapper}>
-                    <Text style={styles.body}>"{body}"</Text>
-                    <Text style={{color: statusColor}}>{status}</Text>
+                    <Text style={styles.body}>👉 {body}</Text>
+                    <Text style={{color: statusColor}}>💡{status}</Text>
                 </View>
             </View>
         )
