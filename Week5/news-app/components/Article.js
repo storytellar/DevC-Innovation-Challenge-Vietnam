@@ -25,19 +25,18 @@ const Article = (props) => {
         //     />
         // </Card>
 
-        <TouchableOpacity
-            onPress={() => props.onPressArticle(item.url)}
+        <View
             style={styles.articleWrapper}
         >
-            <View style={styles.article}>
+            <TouchableOpacity style={styles.article} onPress={() => props.onPressArticle(item.url)}>
                 <Image style={styles.imageWrapper} source={{ uri: item.urlToImage }} />
                 <View style={styles.layer}>
-                    <Text style={styles.publisher}>{item.source.name}</Text>
+                    <Text style={styles.publisher}>👨 {item.source.name}</Text>
                     <Text style={styles.title}>{item.title}</Text>
                     <Text style={styles.info}>{moment(item.publishedAt).startOf('hour').fromNow()}</Text>
                 </View>
-            </View>
-        </TouchableOpacity>
+            </TouchableOpacity>
+        </View>
     )
 }
 
