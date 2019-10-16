@@ -1,21 +1,19 @@
 import React, { Component } from 'react'
-import { Text, ScrollView, StyleSheet, TextInput, Button, Alert, KeyboardAvoidingView, SafeAreaView, View } from 'react-native'
+import { Text, StyleSheet, TextInput, Alert, View, AsyncStorage } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { withNavigationFocus } from 'react-navigation';
 
 import { TODOS } from '../constants/Utils'
 import TodoItem from '../components/TodoItem'
 
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { TouchableOpacity } from 'react-native-gesture-handler';
-
-
-export default class TodoScreen extends Component {
+class TodoScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
             todoList: TODOS,
             inputText: '',
-
         }
     }
 
@@ -82,13 +80,16 @@ export default class TodoScreen extends Component {
         );
     }
 
-    getTodoList = () => {
-        return this.state.todoList;
+    componentDidUpdate(){
+        AsyncStorage.setItem('@Todolist', JSON.stringify(this.state.todoList));
     }
+    componentDidMount(){
+        AsyncStorage.setItem('@Todolist', JSON.stringify(this.state.todoList));
+    }
+    
 
     render() {
         return (
-
             <KeyboardAwareScrollView contentContainerStyle={styles.container}>
                 <View style={styles.header}>
                     <Text style={styles.headerText}>Toodoo ({this.state.todoList.length})</Text>
@@ -168,3 +169,5 @@ TodoScreen.navigationOptions = {
     header: null,
     title: 'Tasks',
 };
+
+export default withNavigationFocus(TodoScreen)
