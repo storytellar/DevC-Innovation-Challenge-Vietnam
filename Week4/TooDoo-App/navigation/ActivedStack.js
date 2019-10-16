@@ -24,7 +24,7 @@ const config = Platform.select({
   ActivedStack.navigationOptions = {
     tabBarLabel: 'Actived',
     tabBarIcon: ({ focused }) => (
-      <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+      <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-walk' : 'md-walk'} />
     ),
   };
   

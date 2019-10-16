@@ -22,7 +22,7 @@ const CompletedStack = createStackNavigator(
 CompletedStack.navigationOptions = {
     tabBarLabel: 'Completed',
     tabBarIcon: ({ focused }) => (
-        <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+        <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-checkmark-circle' : 'md-checkmark-circle'} />
     ),
 };
 

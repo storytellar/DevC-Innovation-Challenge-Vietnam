@@ -136,9 +136,6 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         marginTop: 55,
         paddingBottom: 10,
-        // borderBottomColor: '#aaa',
-        // borderBottomWidth: 0.3,
-
         borderRadius: 5,
         borderWidth: 0.5,
         borderColor: '#333745',
