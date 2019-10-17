@@ -7,27 +7,7 @@ import { Card, Button, Icon } from 'react-native-elements';
 const Article = (props) => {
     const item = props.data;
     return (
-        // <Card title={item.title} image={{ uri: item.urlToImage }}>
-        //     <View style={styles.row}>
-        //         <Text style={styles.label}>Source</Text>
-        //         <Text style={styles.info}>{item.source.name}</Text>
-        //     </View>
-        //     <Text style={{ marginBottom: 10 }}>{item.content}</Text>
-        //     <View style={styles.row}>
-        //         <Text style={styles.label}>Published</Text>
-        //         <Text style={styles.info}>{moment(item.publishedAt).startOf('hour').fromNow()}</Text>
-        //     </View>
-        //     <Button
-        //         icon={<Icon name='book' color='#ffffff' />}
-        //         title="Read more"
-        //         buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
-        //         onPress={() => props.onPressArticle(item.url)}
-        //     />
-        // </Card>
-
-        <View
-            style={styles.articleWrapper}
-        >
+        <View style={styles.articleWrapper} >
             <TouchableOpacity style={styles.article} onPress={() => props.onPressArticle(item.url)}>
                 <Image style={styles.imageWrapper} source={{ uri: item.urlToImage }} />
                 <View style={styles.layer}>
@@ -42,10 +22,8 @@ const Article = (props) => {
 
 const styles = StyleSheet.create({
     articleWrapper: {
-        // backgroundColor: 'blue',
         width: 370,
         height: 370,
-
         alignItems: 'center',
         justifyContent: 'center',
 
